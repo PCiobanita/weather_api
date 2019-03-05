@@ -6,7 +6,7 @@ class CityGenerator
     @json_data = ParseJson.new.parsing_data('city_list.json')
   end
 
-  def get_random_city
+  def create_array
     cityid_array = []
     @json_data.each do |city|
       cityid_array << city['id']
@@ -24,17 +24,7 @@ class CityGenerator
     cityid
   end
 
-  def get_random_city_and_country
-    @array = get_random_city
-    @random_number = rand(0..209579)
-    @cityname = []
-    @countryname = ''
-    @json_data.each do |city|
-      if city['id'] == @array[@random_number]
-        @cityname << city['name']
-        @cityname << city['country']
-      end
-    end
- p @cityname
+  def get_random_city(city_number)
+    @json_data[city_number]
   end
 end

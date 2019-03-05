@@ -5,133 +5,136 @@ class CurrentWeather
   include HTTParty
   base_uri 'api.openweathermap.org/data/2.5'
 
-  def retrive_curent_weather(cityid, api_key)
+  def retrieve_curent_weather(cityid, api_key)
     @curent_weather = JSON.parse(self.class.get("/weather?id=#{cityid}&APPID=#{api_key}").body)
   end
 
-  def retrive_coord
+  def retrieve_coord
     @curent_weather['coord']
   end
 
-  def retrive_longitude
-    retrive_coord['lon']
+  def retrieve_longitude
+    retrieve_coord['lon']
   end
   
-  def retrive_latitude
-    retrive_coord['lat']
+  def retrieve_latitude
+    retrieve_coord['lat']
   end
 
-  def retrive_weather
+  def retrieve_weather
     @curent_weather['weather'][0]
   end
 
-  def retrive_weather_id
-    retrive_weather['id']
+  def retrieve_weather_id
+    retrieve_weather['id']
   end
   
-  def retrive_weather_main
-    retrive_weather['main']
+  def retrieve_weather_main
+    retrieve_weather['main']
   end
 
-  def retrive_weather_description
-    retrive_weather['description']
+  def retrieve_weather_description
+    retrieve_weather['description']
   end
 
-  def retrive_wather_icon
-    retrive_weather['icon']
+  def retrieve_wather_icon
+    retrieve_weather['icon']
   end
 
-  def retrive_base
+  def retrieve_base
     @curent_weather['base']
   end
 
-  def retrive_main_information
+  def retrieve_main_information
     @curent_weather['main']
   end
 
-  def retrive_temp
-    retrive_main_information['temp']
+  def retrieve_temp
+    retrieve_main_information['temp']
   end
 
-  def retrive_pressure
-    retrive_main_information['pressure']
+  def retrieve_pressure
+    retrieve_main_information['pressure']
   end
 
-  def retrive_humidity
-    retrive_main_information['humidity']
+  def retrieve_humidity
+    retrieve_main_information['humidity']
   end
 
-  def retrive_minimum_temp
-    retrive_main_information['temp_min']
+  def retrieve_minimum_temp
+    retrieve_main_information['temp_min']
   end
 
-  def retrive_maximum_temp
-    retrive_main_information['temp_max']
+  def retrieve_maximum_temp
+    retrieve_main_information['temp_max']
   end
 
-  def retrive_visibility
+  def retrieve_visibility
     @curent_weather['visibility']
   end
 
-  def retrive_wind
+  def retrieve_wind
     @curent_weather['wind']
   end
 
-  def retrive_wind_speed
-    retrive_wind['speed']
+  def retrieve_wind_speed
+    retrieve_wind['speed']
   end
 
-  def retrive_wind_degree
-    retrive_wind['deg']
+  def retrieve_wind_degree
+    retrieve_wind['deg']
   end
 
-  def retrive_cloudiness
+  def retrieve_cloudiness
     @curent_weather['clouds']['all']
   end
 
-  def retrive_time_of_datacalculation
+  def retrieve_time_of_datacalculation
     @curent_weather['dt']
   end
 
-  def retrive_sys
+  def retrieve_sys
     @curent_weather['sys']
   end
 
-  def retrive_sys_type
-    retrive_sys['type']
+  def retrieve_sys_type
+    retrieve_sys['type']
   end
 
-  def retrive_sys_id
-    retrive_sys['id']
+  def retrieve_sys_id
+    retrieve_sys['id']
   end
 
-  def retrive_sys_message
-    retrive_sys['message']
+  def retrieve_sys_message
+    retrieve_sys['message']
   end
 
-  def retrive_sys_country
-    retrive_sys['country']
+  def retrieve_sys_country
+    retrieve_sys['country']
   end
 
-  def retrive_sys_sunrise
-    retrive_sys['sunrise']
+  def retrieve_sys_sunrise
+    retrieve_sys['sunrise']
   end
 
-  def retrive_sys_sunset
-    retrive_sys['sunset']
+  def retrieve_sys_sunset
+    retrieve_sys['sunset']
   end
 
-  def retrive_id
+  def retrieve_id
     @curent_weather['id']
   end
 
-  def retrive_name
+  def retrieve_name
     @curent_weather['name']
   end
 
-  def retrive_cod
+  def retrieve_cod
     @curent_weather['cod']
   end
 
 
 end
+test = CurrentWeather.new
+test.retrieve_curent_weather('2643743', '2d602ef4929c9c1bebfbadc8b0065017')
+p test.retrieve_temp
